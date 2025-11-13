@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/d149d0ad02.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRATER AND COUSELLING DESK</title>
+    <link rel="stylesheet" href="pr.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+    <div class="content-wrapper">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img href="logo.png" class="logo-icon">
+                    <span>Hope Family Spirit Filled Asembly</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="ADVANCED CHURCH WEBSITE.html">Home</a></li>
+                    <li><a href="magic hands.html">About</a></li>
+                    <li><a href="testimony.html">Testimonies</a></li>
+                    <li><a href="imgs.html">Events</a></li>
+                    <li><a href="partner.html">Give</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="hero">
+                <h1>WELCOME TO HOPE FAMILY PRAYER AND CONCELLING DESK</h1>
+                <p>Your Zeal and passion for Christ helps us spread more of God's love, serve our community, and make a lasting impact in the lives of those who need it most</p>
+            </div>
+
+            <main>
+  <button id="call-btn"><i class="fa fa-phone-square" aria-hidden="true"></i> MAKE A CALL NOW</button>
+  <div class="hero">
+  <h1>Give your life to Christ</h1>
+  <p style="margin-bottom: 10vh;">
+    "Heavenly Father, I confess that I have sinned against you in thought, word, and deed. I have not loved you with my whole heart, nor have I loved my neighbor as myself. I am truly sorry for all my sins." 
+"Have mercy upon me, O God, according to your lovingkindness. Wash me thoroughly from my guilt and cleanse me from my sins. Create in me a clean heart, O God, and renew a right spirit within me." 
+"Help me to turn away from sin and to live a godly and righteous life. I commit my life to your honor and glory, through Jesus Christ our Lord. Amen." 
+
+  </p>
+
+  <h1>Just Gave your life to Christ</h1>
+  <p style="margin-bottom: 5vh;">HELP US FILL THE FORM BELOW</p>
+   <div style="padding-left: 2rem;
+        padding-right: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;">
+   <div class="login-box">
+   <form action="https://api.web3forms.com/submit" method="POST" class="scroll-animate">
+     <input type="hidden" name="access_key" value="aa30d64e-847a-4838-be0b-987d4433aa60">
+        <input type="text" name="name" placeholder="FULL NAME" required />
+         <input type="text" name="name" placeholder="NEW CONVERT OR REPENTED BELIVER" required />
+        <input type="email" name="email" placeholder="EMAIL" required />
+         <input type="number" name="number" placeholder="PHONE.NO" required />
+        <button type="submit">SUBMIT</button>
+      </form>
+      </div>
+      </div>
+  </div>
+  </main>
+           
+            </div>
+        </div>
+    <script>
+        
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+         
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        function createParticles() {
+            const container = document.querySelector('.background-animation');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 60 + 20;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        document.getElementById("call-btn").addEventListener("click", function() {
+    window.location.href = "tel:+2347052421828";
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Testimony</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            background: white;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 200px;
+            height: 200px;
+            background: white;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .shape3 {
+            width: 150px;
+            height: 150px;
+            background: white;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-30px) translateX(20px);
+            }
+            50% {
+                transform: translateY(-60px) translateX(-20px);
+            }
+            75% {
+                transform: translateY(-30px) translateX(10px);
+            }
+        }
+
+        /* Main Content */
+        .content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem;
+            text-align: center;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-placeholder {
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tagline {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+
+        /* Main Section */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            gap: 3rem;
+        }
+
+        .share-button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .share-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: #f8f9ff;
+        }
+
+        /* Testimonies Slider */
+        .testimonies-section {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            animation: fadeIn 1.5s ease;
+        }
+
+        .testimonies-section h2 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .testimony-slider {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .testimony {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            padding: 1rem;
+        }
+
+        .testimony.active {
+            opacity: 1;
+        }
+
+        .testimony-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimony-author {
+            text-align: right;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: rgba(0,0,0,0.3);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .testimonies-section {
+                padding: 2rem;
+            }
+
+            .share-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+    </div>
+
+    <div class="content">
+        <header>
+            <div class="logo-container">
+                <div class="logo-placeholder">
+                    <img src="image4.jpg">
+                </div>
+            </div>
+            <h1>Share Your Testimony</h1>
+            <p class="tagline">Let your story inspire others</p>
+        </header>
+
+        <main>
+            <a style="text-decoration: none;" href="testimony 1.html" class="share-button" onclick="shareTestimony()">Share Your Testimony</a> 
+
+            <section class="testimonies-section">
+                <h2>Recent Testimonies</h2>
+                <div class="testimony-slider" id="slider">
+                    <div class="testimony active">
+                        <p class="testimony-text">"God healed me when doctors said there was no hope. His grace is sufficient and His love endures forever."</p>
+                        <p class="testimony-author">- Sarah M.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"I was lost in addiction, but Jesus found me and gave me a new life. Today I am free and filled with purpose."</p>
+                        <p class="testimony-author">- John D.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"Through my darkest valley, God's light guided me. He turned my mourning into dancing and my tears into joy."</p>
+                        <p class="testimony-author">- Grace L.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"God provided for my family in miraculous ways. When we had nothing, He showed up and proved He is Jehovah Jireh."</p>
+                        <p class="testimony-author">- Michael P.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"I experienced God's peace in the midst of chaos. His presence is real and His promises are true."</p>
+                        <p class="testimony-author">- Rachel K.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"God restored my broken marriage and brought healing to my family. Nothing is impossible with Him."</p>
+                        <p class="testimony-author">- David & Mary T.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"When I surrendered my life to Christ, He gave me hope and a future. Every day is a new blessing."</p>
+                        <p class="testimony-author">- James W.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"God's faithfulness has been evident throughout my journey. He has never left me nor forsaken me."</p>
+                        <p class="testimony-author">- Elizabeth R.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Sparkage Shots. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        let currentTestimony = 0;
+        const testimonies = document.querySelectorAll('.testimony');
+        const totalTestimonies = testimonies.length;
+
+        function showTestimony(index) {
+            testimonies.forEach(t => t.classList.remove('active'));
+            testimonies[index].classList.add('active');
+        }
+
+        function nextTestimony() {
+            currentTestimony = (currentTestimony + 1) % totalTestimonies;
+            showTestimony(currentTestimony);
+        }
+
+        // Change testimony every 8 seconds
+        setInterval(nextTestimony, 8000);
+
+        function shareTestimony() {
+            alert('Thank you for wanting to share your testimony! This button would typically open a form or redirect to a testimony submission page.');
+            // You can replace this with actual functionality like:
+            // window.location.href = 'submit-testimony.html';
+        }
+    </script>
+</body>
+</html>

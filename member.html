@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>sign ups</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        background: url("image12.jpg") no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: 40px;
+        border-radius: 15px;
+        width: 50%;
+        color: #fff;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .login-box h2 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 30px;
+        font-size: 28px;
+      }
+
+      .login-box input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0 20px;
+        background: transparent;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .login-box input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .login-box button {
+        width: 100%;
+        padding: 12px;
+        background: rgba(48, 47, 47, 0.7);
+        border: none;
+        border-radius: 5px;
+        color: #ffff;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+      }
+
+      .login-box button:hover {
+        background: rgb(34, 34, 34);
+      }
+
+      .login-box .links {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      .login-box .links a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 14px;
+      }
+
+      .login-box .links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-box">
+      <img
+        src="nice one2.png"
+        style="
+          height: 150px;
+          width: 200px;
+          border-radius: 12px;
+          border: 6px solid white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: auto;
+          box-shadow: inset -1px 4px 2px 5px gold;
+          box-shadow: 0 0 0 1px gold;
+        "
+      />
+      <h2 style="color: #fff; margin-top: 2%">Sign up to Church Demo</h2>
+      <form>
+        <input
+          type="text"
+          style="color: grey; font-weight: bold"
+          placeholder="Full Name"
+          required
+        />
+        <input
+          type="email"
+          style="color: grey; font-weight: bold"
+          placeholder="Email Address"
+          required
+        />
+        <input
+          type="password"
+          style="color: grey; font-weight: bold"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Get Started</button>
+        <div class="links">
+          <p style="color: grey; font-weight: bold">Already a member?</p>
+          <a style="color: #000; font-weight: bold" href="login.html">Login</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

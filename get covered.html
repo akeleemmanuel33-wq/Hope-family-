@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Events Slideshow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+            animation: gradientShift 15s ease infinite;
+            background-size: 400% 400%;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        /* Slideshow Section */
+        .slideshow-container {
+            position: relative;
+            max-width: 900px;
+            height: 500px;
+            margin: 0 auto 80px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 40px;
+        }
+        .slide-topic {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 15px 20px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .arrow:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .arrow.left {
+            left: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+        .arrow.right {
+            right: 20px;
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .events-section {
+            margin-bottom: 80px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #fa709a 0%, #fee140 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            animation: slideUp 0.6s ease-out;
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.4);
+        }
+        .event-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+        .event-date {
+            font-size: 1.1rem;
+            color: #a8dadc;
+            margin-bottom: 10px;
+        }
+        .event-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+        .whatsapp-btn {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+        
+        }
+
+        .calendar-section {
+            margin-top: 80px;
+        }
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .month-card {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.3), rgba(59, 130, 246, 0.3));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+            animation: floatIn 0.8s ease-out;
+        }
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .month-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.5), rgba(59, 130, 246, 0.5));
+            box-shadow: 0 15px 40px rgba(147, 51, 234, 0.4);
+        }
+        .month-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .month-theme {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            font-style: italic;
+            line-height: 1.4;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .slideshow-container { height: 300px; }
+            .events-grid { grid-template-columns: 1fr; }
+            .months-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>STAY CONNECTED TO OUR EVENTS</h1>
+         
+        <div class="slideshow-container">
+            <button class="arrow left" onclick="changeSlide(-1)">❮</button>
+           
+            <div class="slide active">
+                <img src="nice one.jpg" alt="Sunday Worship">
+                <div class="slide-overlay">
+                    <div class="slide-topic">Annual Thanksgiving Service </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="TALENT.jpg" alt="Youth Ministry">
+                <div class="slide-overlay">
+                    <div class="slide-topic">Christmas carol</div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="nice one2.png" alt="Community Outreach">
+                <div class="slide-overlay">
+                    <div class="slide-topic">Community Outreach</div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="image6.jpg" alt="Prayer Meeting">
+                <div class="slide-overlay">
+                    <div class="slide-topic">Wenesday mid-week Service</div>
+                </div>
+            </div>
+            <button class="arrow right" onclick="changeSlide(1)">❯</button>
+        </div>
+        
+        <div class="events-section">
+            <h2 class="section-title"> Upcoming Church Events</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <h3 class="event-title">BETHEL 2026</h3>
+                    <p class="event-date">April, 2026 | <i class="fa fa-clock-o" aria-hidden="true"></i> 10:00 AM - 2:00 PM</p>
+                    <p class="event-description">
+                    Join Us for our 6 years Church Anniversary,Lets thank God for his blessings protection and mercies he has shown over us during our impact these few years
+                    </p>
+                    <button class="whatsapp-btn" onclick="contactWhatsApp('BETHEL 2026')">
+                        <span><i class="fa fa-link" aria-hidden="true"></i></span> Get More Info via WhatsApp
+                    </button>
+                </div>
+                <div class="event-card">
+                    <h3 class="event-title">Leadership Submit 2026</h3>
+                    <p class="event-date">February, 2026 | <i class="fa fa-clock-o" aria-hidden="true"></i>  9:00 AM - 3:00 PM Daily</p>
+                    <p class="event-description">
+                        A week of fun activities, Bible lessons, and fellowship for Leadership Growth and growth for divine impact. Registration opens in May!
+                    </p>
+                    <button class="whatsapp-btn" onclick="contactWhatsApp('LEADERSHIP SUBMIT')">
+                        <span><i class="fa fa-link" aria-hidden="true"></i></span> Get More Info via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+         
+        <div class="calendar-section">
+            <h2 class="section-title">2026 Calendar</h2>
+            <div class="months-grid">
+                <div class="month-card">
+                    <div class="month-name">January</div>
+                    <div class="month-theme">Month of Good Beginning</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">February</div>
+                    <div class="month-theme">Month of Love & Unity</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">March</div>
+                    <div class="month-theme">Month of Divine Lifting</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">April</div>
+                    <div class="month-theme">Month of Resurrection Power</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">May</div>
+                    <div class="month-theme">Month of Fruitfulness</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">June</div>
+                    <div class="month-theme">Month of Supernatural Strength</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">July</div>
+                    <div class="month-theme">Month of Open Doors</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">August</div>
+                    <div class="month-theme">Month of Abundant Harvest</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">September</div>
+                    <div class="month-theme">Month of Testimonies</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">October</div>
+                    <div class="month-theme">Month of Overflow</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">November</div>
+                    <div class="month-theme">Month of Thanksgiving</div>
+                </div>
+                <div class="month-card">
+                    <div class="month-name">December</div>
+                    <div class="month-theme">Month of Celebration</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://kit.fontawesome.com/d149d0ad02.js" crossorigin="anonymous"></script>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+           
+            if (n >= slides.length) currentSlide = 0;
+            if (n < 0) currentSlide = slides.length - 1;
+           
+            slides[currentSlide].classList.add('active');
+        }
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+        
+        setInterval(() => {
+            currentSlide++;
+            showSlide(currentSlide);
+        }, 5000);
+        function contactWhatsApp(eventName) {
+            const message = encodeURIComponent(`Hi! I'd like more information about ${eventName}`);
+            window.open(`https://wa.me/2347052421828?text=${message}`, '_blank');
+        }
+        
+        const monthCards = document.querySelectorAll('.month-card');
+        monthCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
