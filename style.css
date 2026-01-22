@@ -8,6 +8,7 @@
             font-family: font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
                    'Segoe UI', Roboto, Arial, sans-serif;
             overflow-x: hidden;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .top-bar {
@@ -725,3 +726,4 @@
 
 
         }   
+
