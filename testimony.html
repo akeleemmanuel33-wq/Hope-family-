@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Testimony</title>
+    <link rel="stylesheet" href="testimony.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+    </div>
+
+    <div class="content">
+        <header>
+            <div class="logo-container">
+                <img src="image4.jpg" alt="Hope Family logo">
+            </div>
+            <h1>Share Your Testimony</h1>
+            <p class="tagline">Let your story inspire others</p>
+        </header>
+
+        <main>
+            <a href="testimony 1.html" class="share-button">Share Your Testimony</a>
+
+            <section class="testimonies-section">
+                <h2>Recent Testimonies</h2>
+                <p class="section-sub">Real stories from our church family</p>
+
+                <div class="testimony-slider" id="slider">
+                    <div class="testimony active">
+                        <p class="testimony-text">"God healed me when doctors said there was no hope. His grace is sufficient and His love endures forever."</p>
+                        <p class="testimony-author">- Sarah M.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"I was lost in addiction, but Jesus found me and gave me a new life. Today I am free and filled with purpose."</p>
+                        <p class="testimony-author">- John D.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"Through my darkest valley, God's light guided me. He turned my mourning into dancing and my tears into joy."</p>
+                        <p class="testimony-author">- Grace L.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"God provided for my family in miraculous ways. When we had nothing, He showed up and proved He is Jehovah Jireh."</p>
+                        <p class="testimony-author">- Michael P.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"I experienced God's peace in the midst of chaos. His presence is real and His promises are true."</p>
+                        <p class="testimony-author">- Rachel K.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"God restored my broken marriage and brought healing to my family. Nothing is impossible with Him."</p>
+                        <p class="testimony-author">- David & Mary T.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"When I surrendered my life to Christ, He gave me hope and a future. Every day is a new blessing."</p>
+                        <p class="testimony-author">- James W.</p>
+                    </div>
+                    <div class="testimony">
+                        <p class="testimony-text">"God's faithfulness has been evident throughout my journey. He has never left me nor forsaken me."</p>
+                        <p class="testimony-author">- Elizabeth R.</p>
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="slider-arrow" id="prevBtn" aria-label="Previous testimony">❮</button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-arrow" id="nextBtn" aria-label="Next testimony">❯</button>
+                </div>
+
+                <div class="slider-progress">
+                    <div class="slider-progress-bar" id="progressBar"></div>
+                </div>
+            </section>
+
+            <section class="grid-section">
+                <h2>Every Testimony</h2>
+                <div class="testimony-grid" id="testimonyGrid">
+                    <div class="testimony-card">
+                        <p>"God healed me when doctors said there was no hope. His grace is sufficient and His love endures forever."</p>
+                        <span>- Sarah M.</span>
+                    </div>
+                    <div class="testimony-card">
+                        <p>"I was lost in addiction, but Jesus found me and gave me a new life. Today I am free and filled with purpose."</p>
+                        <span>- John D.</span>
+                    </div>
+                    <div class="testimony-card">
+                        <p>"Through my darkest valley, God's light guided me. He turned my mourning into dancing and my tears into joy."</p>
+                        <span>- Grace L.</span>
+                    </div>
+                    <div class="testimony-card">
+                        <p>"God provided for my family in miraculous ways. When we had nothing, He showed up and proved He is Jehovah Jireh."</p>
+                        <span>- Michael P.</span>
+                    </div>
+                    <div class="testimony-card">
+                        <p>"I experienced God's peace in the midst of chaos. His presence is real and His promises are true."</p>
+                        <span>- Rachel K.</span>
+                    </div>
+                    <div class="testimony-card">
+                        <p>"God restored my broken marriage and brought healing to my family. Nothing is impossible with Him."</p>
+                        <span>- David & Mary T.</span>
+                    </div>
+                    <div class="testimony-card">
+                        <p>"When I surrendered my life to Christ, He gave me hope and a future. Every day is a new blessing."</p>
+                        <span>- James W.</span>
+                    </div>
+                    <div class="testimony-card">
+                        <p>"God's faithfulness has been evident throughout my journey. He has never left me nor forsaken me."</p>
+                        <span>- Elizabeth R.</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Sparkage Shots. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // ===== Featured carousel =====
+        let currentTestimony = 0;
+        let autoTimer = null;
+        const AUTO_MS = 8000;
+
+        const testimonies = document.querySelectorAll('.testimony');
+        const totalTestimonies = testimonies.length;
+        const dotsContainer = document.getElementById('sliderDots');
+        const progressBar = document.getElementById('progressBar');
+        const slider = document.getElementById('slider');
+
+        testimonies.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Go to testimony ${i + 1}`);
+            dot.addEventListener('click', () => goToTestimony(i));
+            dotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showTestimony(index) {
+            testimonies.forEach(t => t.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            testimonies[index].classList.add('active');
+            dots[index].classList.add('active');
+            restartProgress();
+        }
+
+        function nextTestimony() {
+            currentTestimony = (currentTestimony + 1) % totalTestimonies;
+            showTestimony(currentTestimony);
+        }
+
+        function prevTestimony() {
+            currentTestimony = (currentTestimony - 1 + totalTestimonies) % totalTestimonies;
+            showTestimony(currentTestimony);
+        }
+
+        function goToTestimony(index) {
+            currentTestimony = index;
+            showTestimony(currentTestimony);
+        }
+
+        function restartProgress() {
+            progressBar.classList.remove('animate');
+            void progressBar.offsetWidth; // restart CSS animation
+            progressBar.classList.add('animate');
+            clearInterval(autoTimer);
+            autoTimer = setInterval(nextTestimony, AUTO_MS);
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            nextTestimony();
+        });
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            prevTestimony();
+        });
+
+        // Pause on hover
+        const testimoniesSection = document.querySelector('.testimonies-section');
+        testimoniesSection.addEventListener('mouseenter', () => {
+            clearInterval(autoTimer);
+            progressBar.classList.remove('animate');
+        });
+        testimoniesSection.addEventListener('mouseleave', () => {
+            restartProgress();
+        });
+
+        // Swipe support
+        let touchStartX = 0;
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        slider.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const diff = touchEndX - touchStartX;
+            if (Math.abs(diff) > 40) {
+                diff < 0 ? nextTestimony() : prevTestimony();
+            }
+        });
+
+        restartProgress();
+
+        // ===== Scroll-reveal for the full grid =====
+        const cards = document.querySelectorAll('.testimony-card');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('show'), i * 60);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        cards.forEach(card => revealObserver.observe(card));
+    </script>
+</body>
+</html>

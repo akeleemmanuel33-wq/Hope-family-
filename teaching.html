@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Video Teachings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px 0;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-cover {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .video-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        .video-desc {
+            color: #777;
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .video-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-watch {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-watch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-download {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-download:hover {
+            background: #e0e0e0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close-modal:hover {
+            color: #667eea;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+
+    <div class="container">
+        <header>
+            <h1>TEACHINGS OF GOD's WORD</h1>
+            <P>Stay divinely connected with Us as you get in touch with God's word brought to usvthrough GOD servants</P>
+            <p>Watch and download inspiring messages from our ministry</p>
+        </header>
+
+        <div class="video-grid">
+            
+           
+            <div class="video-card">
+                <div class="video-cover" style="background-image: url('image10.jpg')" onclick="openModal(this)">
+                    <div class="play-btn">▶</div>
+                    <video style="display:none;">
+                        <source src="Video1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Walking in Faith</h3>
+                    <p class="video-meta">Rev Dr Godwin Akele• October 20, 2025 • 45 min</p>
+                    <p class="video-desc">An inspiring message about trusting God in uncertain times and stepping out in faith.</p>
+                    <div class="video-actions">
+                        <button class="btn btn-watch" onclick="openModal(this.closest('.video-card').querySelector('.video-cover'))">Watch</button>
+                        <button class="btn btn-download" onclick="downloadVideo(this.closest('.video-card').querySelector('video source').src, 'Walking-in-Faith')">Download</button>
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="video-card">
+                <div class="video-cover" style="background-image: url('image5.jpg')" onclick="openModal(this)">
+                    <div class="play-btn">▶</div>
+                    <video style="display:none;">
+                        <source src="HOME.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">The Power of Prayer</h3>
+                    <p class="video-meta">Rev Dr Godwin Akele • October 13, 2025 • 38 min</p>
+                    <p class="video-desc">Discover how prayer transforms our lives and strengthens our relationship with God.</p>
+                    <div class="video-actions">
+                        <button class="btn btn-watch" onclick="openModal(this.closest('.video-card').querySelector('.video-cover'))">Watch</button>
+                        <button class="btn btn-download" onclick="downloadVideo(this.closest('.video-card').querySelector('video source').src, 'Power-of-Prayer')">Download</button>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="video-card">
+                <div class="video-cover" style="background-image: url('image8.jpg')" onclick="openModal(this)">
+                    <div class="play-btn">▶</div>
+                    <video style="display:none;">
+                        <source src="HOME.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Love Your Neighbor</h3>
+                    <p class="video-meta">Rev Dr Godwin Akele • October 6, 2025 • 42 min</p>
+                    <p class="video-desc">Understanding what it truly means to love and serve others in our community.</p>
+                    <div class="video-actions">
+                        <button class="btn btn-watch" onclick="openModal(this.closest('.video-card').querySelector('.video-cover'))">Watch</button>
+                        <button class="btn btn-download" onclick="downloadVideo(this.closest('.video-card').querySelector('video source').src, 'Love-Your-Neighbor')">Download</button>
+                    </div>
+                </div>
+            </div>
+
+         
+            <div class="video-card">
+                <div class="video-cover" style="background-image: url('image9.jpg')" onclick="openModal(this)">
+                    <div class="play-btn">▶</div>
+                    <video style="display:none;">
+                        <source src="HOME.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Finding Peace</h3>
+                    <p class="video-meta">Pastor Mrs Akele • September 29, 2025 • 40 min</p>
+                    <p class="video-desc">A message about finding peace in the midst of life's storms through God's presence.</p>
+                    <div class="video-actions">
+                        <button class="btn btn-watch" onclick="openModal(this.closest('.video-card').querySelector('.video-cover'))">Watch</button>
+                        <button class="btn btn-download" onclick="downloadVideo(this.closest('.video-card').querySelector('video source').src, 'Finding-Peace')">Download</button>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="video-card">
+                <div class="video-cover" style="background-image: url('image10.jpg')" onclick="openModal(this)">
+                    <div class="play-btn">▶</div>
+                    <video style="display:none;">
+                        <source src="HOME.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">The Grace of God</h3>
+                    <p class="video-meta">Rev Dr Godwin Akele • September 22, 2025 • 50 min</p>
+                    <p class="video-desc">Exploring the boundless grace of God and how it changes everything.</p>
+                    <div class="video-actions">
+                        <button class="btn btn-watch" onclick="openModal(this.closest('.video-card').querySelector('.video-cover'))">Watch</button>
+                        <button class="btn btn-download" onclick="downloadVideo(this.closest('.video-card').querySelector('video source').src, 'Grace-of-God')">Download</button>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="video-card">
+                <div class="video-cover" style="background-image: url('image11.jpg')" onclick="openModal(this)">
+                    <div class="play-btn">▶</div>
+                    <video style="display:none;">
+                        <source src="HOME.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Building Strong Families</h3>
+                    <p class="video-meta">Pastor Mrs Akele• September 15, 2025 • 35 min</p>
+                    <p class="video-desc">Practical wisdom for building Christ-centered homes and strong family relationships.</p>
+                    <div class="video-actions">
+                        <button class="btn btn-watch" onclick="openModal(this.closest('.video-card').querySelector('.video-cover'))">Watch</button>
+                        <button class="btn btn-download" onclick="downloadVideo(this.closest('.video-card').querySelector('video source').src, 'Strong-Families')">Download</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <video id="modalVideo" controls></video>
+        </div>
+    </div>
+
+    <script>
+        function openModal(coverEl) {
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const videoEl = coverEl.querySelector('video');
+            const videoSrc = videoEl.querySelector('source').src;
+            
+            modalVideo.src = videoSrc;
+            modal.style.display = 'block';
+            modalVideo.play();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            modalVideo.pause();
+            modalVideo.src = '';
+            modal.style.display = 'none';
+        }
+
+        function downloadVideo(videoPath, filename) {
+            const a = document.createElement('a');
+            a.href = videoPath;
+            a.download = filename + '.mp4';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
