@@ -2,156 +2,250 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Church Events Slideshow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Church Events - Hope Family Spirit Filled Assembly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="get covered.css">
 </head>
 <body>
-    <div class="container">
-        <h1>STAY CONNECTED TO OUR EVENTS</h1>
-         
-        <div class="slideshow-container">
-            <button class="arrow left" onclick="changeSlide(-1)">❮</button>
-           
-            <div class="slide active">
-                <img src="nice one.jpg" alt="Sunday Worship">
-                <div class="slide-overlay">
-                    <div class="slide-topic">Annual Thanksgiving Service </div>
-                </div>
+    <header class="top-bar">
+        <div class="logo-section">
+            <img src="logo.png" class="logo" alt="Hope Family logo">
+            <div class="church-info">
+                <h1>HOPE FAMILY SPIRIT FILLED ASSEMBLY</h1>
+                <p class="motto">A Place Where Values Are Added To Destinies</p>
             </div>
-            <div class="slide">
-                <img src="TALENT.jpg" alt="Youth Ministry">
-                <div class="slide-overlay">
-                    <div class="slide-topic">Christmas carol</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="nice one2.png" alt="Community Outreach">
-                <div class="slide-overlay">
-                    <div class="slide-topic">Community Outreach</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="image6.jpg" alt="Prayer Meeting">
-                <div class="slide-overlay">
-                    <div class="slide-topic">Wenesday mid-week Service</div>
-                </div>
-            </div>
-            <button class="arrow right" onclick="changeSlide(1)">❯</button>
         </div>
-        
-        <div class="events-section">
-            <h2 class="section-title"> Upcoming Church Events</h2>
+        <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="scroll-progress" aria-hidden="true"></div>
+    </header>
+
+    <nav class="nav-menu" id="site-menu" aria-label="Main menu">
+        <ul>
+            <li><a href="ADVANCED CHURCH WEBSITE.html">Home</a></li>
+            <li><a href="magic hands.html">About Us</a></li>
+            <li><a href="partner.html">Give</a></li>
+            <li><a href="#" aria-current="page">Upcoming Events</a></li>
+            <li><a href="coming.html">Members Dashboard</a></li>
+            <li><a href="visit.html">Plan a visit</a></li>
+            <li><a href="teaching.html">Sermons</a></li>
+            <li><a href="imgs.html">Gallery</a></li>
+            <li><a href="prayers.html">Prayers and Counselling</a></li>
+            <li><a href="testimony.html">TESTIMONIES</a></li>
+        </ul>
+    </nav>
+    <div class="nav-backdrop"></div>
+
+    <section class="hero" id="top" aria-label="Church events slideshow">
+        <div class="hero-slides">
+            <div class="slide active" data-topic="Annual Thanksgiving Service">
+                <img src="nice one.jpg" alt="Annual Thanksgiving Service">
+            </div>
+            <div class="slide" data-topic="Christmas Carol">
+                <img src="TALENT.jpg" alt="Christmas carol" loading="lazy">
+            </div>
+            <div class="slide" data-topic="Community Outreach">
+                <img src="nice one2.png" alt="Community Outreach" loading="lazy">
+            </div>
+            <div class="slide" data-topic="Wednesday Mid-week Service">
+                <img src="image6.jpg" alt="Wednesday mid-week service" loading="lazy">
+            </div>
+        </div>
+        <div class="hero-shade"></div>
+
+        <div class="hero-text">
+            <p class="eyebrow">WHAT'S HAPPENING</p>
+            <h2>STAY CONNECTED TO OUR EVENTS</h2>
+        </div>
+
+        <div class="hero-caption">
+            <div>
+                <span class="slide-tag">FROM OUR CHURCH LIFE</span>
+                <div class="slide-topic" id="slideTopic" aria-live="polite"></div>
+            </div>
+            <div class="hero-controls">
+                <button class="arrow" type="button" id="prevSlide" aria-label="Previous slide">❮</button>
+                <div class="dots" id="dots"></div>
+                <button class="arrow" type="button" id="nextSlide" aria-label="Next slide">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="events-section">
+            <h2 class="section-title">Upcoming Church Events</h2>
             <div class="events-grid">
                 <div class="event-card">
-                    <h3 class="event-title">BETHEL 2026</h3>
-                    <p class="event-date">April, 2026 | <i class="fa fa-clock-o" aria-hidden="true"></i> 10:00 AM - 2:00 PM</p>
+                    <h3 class="event-title">BETHEL 2027</h3>
+                    <p class="event-date">April, 2027 | <i class="fa fa-clock-o" aria-hidden="true"></i> 10:00 AM - 2:00 PM</p>
                     <p class="event-description">
-                    Join Us for our 6 years Church Anniversary,Lets thank God for his blessings protection and mercies he has shown over us during our impact these few years
+                        Join us for our 7 years Church Anniversary. Let's thank God for his blessings, protection and mercies he has shown over us during our impact these few years.
                     </p>
-                    <button class="whatsapp-btn" onclick="contactWhatsApp('BETHEL 2026')">
+                    <button class="whatsapp-btn" type="button" onclick="contactWhatsApp('BETHEL 2027')">
                         <span><i class="fa fa-link" aria-hidden="true"></i></span> Get More Info via WhatsApp
                     </button>
                 </div>
                 <div class="event-card">
-                    <h3 class="event-title">Leadership Submit 2026</h3>
-                    <p class="event-date">February, 2026 | <i class="fa fa-clock-o" aria-hidden="true"></i>  9:00 AM - 3:00 PM Daily</p>
+                    <h3 class="event-title">Leadership Summit 2027</h3>
+                    <p class="event-date">February, 2027 | <i class="fa fa-clock-o" aria-hidden="true"></i> 9:00 AM - 3:00 PM Daily</p>
                     <p class="event-description">
-                        A week of fun activities, Bible lessons, and fellowship for Leadership Growth and growth for divine impact. Registration opens in May!
+                        A week of fun activities, Bible lessons, and fellowship for leadership growth and divine impact. Registration opens in May!
                     </p>
-                    <button class="whatsapp-btn" onclick="contactWhatsApp('LEADERSHIP SUBMIT')">
+                    <button class="whatsapp-btn" type="button" onclick="contactWhatsApp('LEADERSHIP SUMMIT 2027')">
                         <span><i class="fa fa-link" aria-hidden="true"></i></span> Get More Info via WhatsApp
                     </button>
                 </div>
             </div>
-        </div>
-         
-        <div class="calendar-section">
-            <h2 class="section-title">2026 Calendar</h2>
+        </section>
+
+        <section class="calendar-section">
+            <h2 class="section-title">2027 Calendar</h2>
             <div class="months-grid">
-                <div class="month-card">
-                    <div class="month-name">January</div>
-                    <div class="month-theme">Month of Good Beginning</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">February</div>
-                    <div class="month-theme">Month of Love & Unity</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">March</div>
-                    <div class="month-theme">Month of Divine Lifting</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">April</div>
-                    <div class="month-theme">Month of Resurrection Power</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">May</div>
-                    <div class="month-theme">Month of Fruitfulness</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">June</div>
-                    <div class="month-theme">Month of Supernatural Strength</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">July</div>
-                    <div class="month-theme">Month of Open Doors</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">August</div>
-                    <div class="month-theme">Month of Abundant Harvest</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">September</div>
-                    <div class="month-theme">Month of Testimonies</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">October</div>
-                    <div class="month-theme">Month of Overflow</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">November</div>
-                    <div class="month-theme">Month of Thanksgiving</div>
-                </div>
-                <div class="month-card">
-                    <div class="month-name">December</div>
-                    <div class="month-theme">Month of Celebration</div>
-                </div>
+                <div class="month-card"><div class="month-name">January</div><div class="month-theme">Month of Good Beginning</div></div>
+                <div class="month-card"><div class="month-name">February</div><div class="month-theme">Month of Love &amp; Unity</div></div>
+                <div class="month-card"><div class="month-name">March</div><div class="month-theme">Month of Divine Lifting</div></div>
+                <div class="month-card"><div class="month-name">April</div><div class="month-theme">Month of Resurrection Power</div></div>
+                <div class="month-card"><div class="month-name">May</div><div class="month-theme">Month of Fruitfulness</div></div>
+                <div class="month-card"><div class="month-name">June</div><div class="month-theme">Month of Supernatural Strength</div></div>
+                <div class="month-card"><div class="month-name">July</div><div class="month-theme">Month of Open Doors</div></div>
+                <div class="month-card"><div class="month-name">August</div><div class="month-theme">Month of Abundant Harvest</div></div>
+                <div class="month-card"><div class="month-name">September</div><div class="month-theme">Month of Testimonies</div></div>
+                <div class="month-card"><div class="month-name">October</div><div class="month-theme">Month of Overflow</div></div>
+                <div class="month-card"><div class="month-name">November</div><div class="month-theme">Month of Thanksgiving</div></div>
+                <div class="month-card"><div class="month-name">December</div><div class="month-theme">Month of Celebration</div></div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-<script src="https://kit.fontawesome.com/d149d0ad02.js" crossorigin="anonymous"></script>
+    <footer>Hope Family Spirit Filled Assembly &middot; A Place Where Values Are Added To Destinies</footer>
 
+    <script src="https://kit.fontawesome.com/d149d0ad02.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-           
-            if (n >= slides.length) currentSlide = 0;
-            if (n < 0) currentSlide = slides.length - 1;
-           
-            slides[currentSlide].classList.add('active');
+        /* ---------- Header height, menu, progress bar ---------- */
+        const topBar = document.querySelector('.top-bar');
+        const root = document.documentElement;
+        function syncHeaderHeight() { root.style.setProperty('--header-h', topBar.offsetHeight + 'px'); }
+        syncHeaderHeight();
+        window.addEventListener('load', syncHeaderHeight);
+        window.addEventListener('resize', syncHeaderHeight);
+        if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe(topBar);
+
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const backdrop = document.querySelector('.nav-backdrop');
+        navMenu.querySelectorAll('li').forEach((li, i) => li.style.setProperty('--i', i));
+
+        function setMenu(open) {
+            hamburger.classList.toggle('active', open);
+            navMenu.classList.toggle('active', open);
+            backdrop.classList.toggle('active', open);
+            document.body.classList.toggle('menu-open', open);
+            hamburger.setAttribute('aria-expanded', open);
+            hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
         }
-        function changeSlide(direction) {
-            currentSlide += direction;
-            showSlide(currentSlide);
+        hamburger.addEventListener('click', () => setMenu(!navMenu.classList.contains('active')));
+        backdrop.addEventListener('click', () => setMenu(false));
+        navMenu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+        const bar = document.querySelector('.scroll-progress');
+        window.addEventListener('scroll', () => {
+            const max = root.scrollHeight - window.innerHeight;
+            bar.style.setProperty('--p', max > 0 ? Math.min(window.scrollY / max, 1) : 0);
+        }, { passive: true });
+
+        /* ---------- Slideshow: arrows, dots, swipe, auto-play ---------- */
+        const slides = Array.from(document.querySelectorAll('.slide'));
+        const dotsWrap = document.getElementById('dots');
+        const topicEl = document.getElementById('slideTopic');
+        let current = 0, timer = null;
+
+        const dots = slides.map((_, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.setAttribute('aria-label', 'Show slide ' + (i + 1));
+            b.addEventListener('click', () => { goTo(i); restart(); });
+            dotsWrap.appendChild(b);
+            return b;
+        });
+
+        function goTo(i) {
+            current = (i + slides.length) % slides.length;
+            slides.forEach((s, n) => s.classList.toggle('active', n === current));
+            dots.forEach((d, n) => d.classList.toggle('active', n === current));
+            topicEl.textContent = slides[current].dataset.topic;
+            if (window.gsap) gsap.fromTo(topicEl, { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' });
         }
-        
-        setInterval(() => {
-            currentSlide++;
-            showSlide(currentSlide);
-        }, 5000);
+        function start() { if (!timer) timer = setInterval(() => goTo(current + 1), 5000); }
+        function stop() { clearInterval(timer); timer = null; }
+        function restart() { stop(); start(); }
+
+        document.getElementById('prevSlide').addEventListener('click', () => { goTo(current - 1); restart(); });
+        document.getElementById('nextSlide').addEventListener('click', () => { goTo(current + 1); restart(); });
+        document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+        const hero = document.querySelector('.hero');
+        let touchX = null;
+        hero.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+        hero.addEventListener('touchend', (e) => {
+            if (touchX === null) return;
+            const dx = e.changedTouches[0].clientX - touchX;
+            if (Math.abs(dx) > 50) { goTo(current + (dx < 0 ? 1 : -1)); restart(); }
+            touchX = null;
+        }, { passive: true });
+
+        goTo(0);
+        start();
+
+        /* ---------- WhatsApp ---------- */
         function contactWhatsApp(eventName) {
             const message = encodeURIComponent(`Hi! I'd like more information about ${eventName}`);
             window.open(`https://wa.me/2347052421828?text=${message}`, '_blank');
         }
-        
-        const monthCards = document.querySelectorAll('.month-card');
-        monthCards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
+
+        /* ---------- GSAP: zoom and transitions as you scroll ---------- */
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (window.gsap && window.ScrollTrigger && !reduceMotion) {
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.config({ ignoreMobileResize: true });
+
+            // intro
+            gsap.from('.eyebrow, .hero-text h2', { y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: 'power3.out', delay: 0.2 });
+            gsap.from('.hero-caption', { y: 24, opacity: 0, duration: 0.9, ease: 'power2.out', delay: 0.9 });
+
+            // hero zooms in and fades as you scroll away
+            const heroScroll = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+            gsap.to('.hero-slides', { scale: 1.35, ease: 'none', scrollTrigger: heroScroll });
+            gsap.to('.hero-text', { yPercent: -40, opacity: 0, ease: 'none', scrollTrigger: heroScroll });
+            gsap.to('.hero-caption', { opacity: 0, ease: 'none', scrollTrigger: { ...heroScroll, end: '60% top' } });
+
+            // headings zoom up into place
+            gsap.utils.toArray('.section-title').forEach((t) => {
+                gsap.from(t, { scale: 0.6, opacity: 0, y: 60, ease: 'none',
+                    scrollTrigger: { trigger: t, start: 'top 90%', end: 'top 60%', scrub: true } });
+            });
+
+            // event cards zoom and tilt in
+            gsap.utils.toArray('.event-card').forEach((card, i) => {
+                gsap.from(card, { scale: 0.82, opacity: 0, y: 90, rotate: i % 2 ? 2.5 : -2.5, ease: 'none',
+                    scrollTrigger: { trigger: card, start: 'top 95%', end: 'top 60%', scrub: 0.6 } });
+            });
+
+            // events section shrinks back as the calendar slides over it
+            gsap.to('.events-section', { scale: 0.93, opacity: 0.35, ease: 'none',
+                scrollTrigger: { trigger: '.calendar-section', start: 'top 90%', end: 'top 20%', scrub: true } });
+
+            // months pop in one after another
+            gsap.from('.month-card', { scale: 0.5, opacity: 0, y: 50, duration: 0.7, ease: 'back.out(1.5)',
+                stagger: { each: 0.06 }, scrollTrigger: { trigger: '.months-grid', start: 'top 85%' } });
+        }
     </script>
 </body>
 </html>
